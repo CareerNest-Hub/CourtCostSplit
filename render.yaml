@@ -9,3 +9,5 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: GOOGLE_API_KEY
+        fromSecret: true # This tells Render to use a secret environment variable
