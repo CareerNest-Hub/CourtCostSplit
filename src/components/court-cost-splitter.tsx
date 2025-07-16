@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { z } from "zod";
 import { AnimatePresence, motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
+import { Loader2, Edit } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { CostsSchema, Step1Costs } from "./steps/step-1-costs";
@@ -111,7 +111,7 @@ export default function CourtCostSplitter() {
         }
         return (
           <motion.div key="step3" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            {results && <Step3Results results={results} aiSuggestion={aiSuggestion} onStartOver={handleStartOver} />}
+            {results && <Step3Results results={results} aiSuggestion={aiSuggestion} onStartOver={handleStartOver} onBack={handleBack} />}
           </motion.div>
         );
       default:

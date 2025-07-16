@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, formatMinutes } from "@/lib/calculator";
 import type { CalculationResult } from "@/types";
-import { Hourglass, Lightbulb, Users, Download } from "lucide-react";
+import { Hourglass, Lightbulb, Users, Download, Edit, RefreshCw } from "lucide-react";
 import { ShuttlecockIcon } from "../icons/shuttlecock-icon";
 import { useToast } from "@/hooks/use-toast";
 
@@ -16,9 +16,10 @@ interface Step3ResultsProps {
   results: CalculationResult;
   aiSuggestion: { suggestedMethod: string; reasoning: string } | null;
   onStartOver: () => void;
+  onBack: () => void;
 }
 
-export function Step3Results({ results, aiSuggestion, onStartOver }: Step3ResultsProps) {
+export function Step3Results({ results, aiSuggestion, onStartOver, onBack }: Step3ResultsProps) {
   const { totalCourtCost, totalShuttlecockCost, grandTotal, playerCosts } = results;
   const resultsRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -122,9 +123,16 @@ export function Step3Results({ results, aiSuggestion, onStartOver }: Step3Result
             </Card>
         </div>
       
-        <div className="text-center mt-8 flex flex-wrap justify-center gap-4">
-            <Button onClick={onStartOver}>Start New Calculation</Button>
-            <Button onClick={handleSaveAsImage} variant="outline">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Button onClick={onStartOver}>
+                <RefreshCw className="mr-2 h-4 w-4" />
+                Start New
+            </Button>
+            <Button onClick={onBack} variant="outline">
+                <Edit className="mr-2 h-4 w-4" />
+                Edit
+            </Button>
+            <Button onClick={handleSaveAsImage} variant="secondary">
                 <Download className="mr-2 h-4 w-4" />
                 Save as Image
             </Button>
