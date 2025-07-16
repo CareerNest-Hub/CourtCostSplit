@@ -43,15 +43,22 @@ export default function CourtCostSplitter() {
       const calculated = calculateCosts(costsData, data.players);
       setResults(calculated);
 
-      const suggestion = await getSharingSuggestion(data.players, costsData.shuttlecocksUsed);
-      if ("suggestedMethod" in suggestion) {
-        setAiSuggestion(suggestion);
-      } else {
-        // Handle error case if needed
-        console.error(suggestion.error);
+      try {
+        const suggestion = await getSharingSuggestion(data.players, costsData.shuttlecocksUsed);
+        if ("suggestedMethod" in suggestion) {
+          setAiSuggestion(suggestion);
+        } else {
+           console.error(suggestion.error);
+           setAiSuggestion({
+              suggestedMethod: "Error",
+              reasoning: "Could not fetch AI suggestion. Please check your connection or try again later.",
+          });
+        }
+      } catch (e) {
+         console.error(e);
          setAiSuggestion({
             suggestedMethod: "Error",
-            reasoning: "Could not fetch AI suggestion. Please check your connection or try again later.",
+            reasoning: "Could not fetch AI suggestion. An unexpected error occurred.",
         });
       }
     }
@@ -83,7 +90,13 @@ export default function CourtCostSplitter() {
       case 2:
         return (
           <motion.div key="step2" initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 50 }}>
-            <Step2Players onSubmit={handleStep2Submit} onBack={handleBack} defaultValues={playersData} />
+            <Step2Players 
+              onSubmit={handleStep2Submit} 
+              onBack={handleBack} 
+              defaultValues={playersData}
+              courtStartTime={costsData?.courtStartTime}
+              courtEndTime={costsData?.courtEndTime}
+            />
           </motion.div>
         );
       case 3:

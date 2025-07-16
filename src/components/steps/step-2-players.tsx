@@ -31,13 +31,15 @@ interface Step2PlayersProps {
   onSubmit: (data: PlayersFormValues) => void;
   onBack: () => void;
   defaultValues?: PlayersFormValues | null;
+  courtStartTime?: string;
+  courtEndTime?: string;
 }
 
-export function Step2Players({ onSubmit, onBack, defaultValues }: Step2PlayersProps) {
+export function Step2Players({ onSubmit, onBack, defaultValues, courtStartTime = "19:00", courtEndTime = "21:00" }: Step2PlayersProps) {
   const form = useForm<PlayersFormValues>({
     resolver: zodResolver(PlayersSchema),
     defaultValues: defaultValues || {
-      players: [{ name: "Player 1", arrivalTime: "19:00", departureTime: "21:00" }],
+      players: [{ name: "Player 1", arrivalTime: courtStartTime, departureTime: courtEndTime }],
     },
   });
 
@@ -45,6 +47,15 @@ export function Step2Players({ onSubmit, onBack, defaultValues }: Step2PlayersPr
     control: form.control,
     name: "players",
   });
+
+  const handleAddPlayer = () => {
+    const newPlayer = {
+      name: `Player ${fields.length + 1}`,
+      arrivalTime: courtStartTime,
+      departureTime: courtEndTime,
+    };
+    append(newPlayer);
+  }
 
   return (
     <>
@@ -123,7 +134,7 @@ export function Step2Players({ onSubmit, onBack, defaultValues }: Step2PlayersPr
           <Button
             type="button"
             variant="outline"
-            onClick={() => append({ name: `Player ${fields.length + 1}`, arrivalTime: "19:00", departureTime: "21:00" })}
+            onClick={handleAddPlayer}
             className="w-full"
           >
             <PlusCircle className="mr-2 h-4 w-4" />
