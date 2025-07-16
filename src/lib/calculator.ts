@@ -57,9 +57,9 @@ export function calculateCosts(costs: Costs, players: Player[]): CalculationResu
 }
 
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat('en-US', {
+  return new Intl.NumberFormat('lo-LA', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'LAK',
   }).format(amount);
 }
 

@@ -8,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { DollarSign, Clock, Hourglass } from "lucide-react";
+import { Clock, Hourglass } from "lucide-react";
 import { ShuttlecockIcon } from "../icons/shuttlecock-icon";
 
 const timeRegex = /^(?:2[0-3]|[01]?[0-9]):[0-5][0-9]$/;
@@ -95,9 +95,9 @@ export function Step1Costs({ onSubmit, defaultValues }: Step1CostsProps) {
                   <FormItem>
                     <FormLabel>Hourly Rate</FormLabel>
                      <div className="relative">
-                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₭</span>
                       <FormControl>
-                        <Input type="number" step="0.01" placeholder="e.g., 20" className="pl-9" {...field} />
+                        <Input type="number" step="0.01" placeholder="e.g., 20000" className="pl-9" {...field} />
                       </FormControl>
                     </div>
                     <FormMessage />
@@ -132,9 +132,9 @@ export function Step1Costs({ onSubmit, defaultValues }: Step1CostsProps) {
                   <FormItem>
                     <FormLabel>Price per Shuttlecock</FormLabel>
                     <div className="relative">
-                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">₭</span>
                       <FormControl>
-                        <Input type="number" step="0.01" placeholder="e.g., 1.50" className="pl-9" {...field} />
+                        <Input type="number" step="0.01" placeholder="e.g., 15000" className="pl-9" {...field} />
                       </FormControl>
                     </div>
                     <FormMessage />

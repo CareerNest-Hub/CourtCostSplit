@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { formatCurrency, formatMinutes } from "@/lib/calculator";
 import type { CalculationResult } from "@/types";
-import { DollarSign, Hourglass, Lightbulb, Users, Download } from "lucide-react";
+import { Hourglass, Lightbulb, Users, Download } from "lucide-react";
 import { ShuttlecockIcon } from "../icons/shuttlecock-icon";
 import { useToast } from "@/hooks/use-toast";
 
@@ -60,7 +60,7 @@ export function Step3Results({ results, aiSuggestion, onStartOver }: Step3Result
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Card className="bg-accent/30">
                 <CardHeader>
-                    <CardTitle className="flex items-center gap-2 font-headline text-xl"><DollarSign className="h-5 w-5 text-primary"/>Total Costs</CardTitle>
+                    <CardTitle className="flex items-center gap-2 font-headline text-xl"><span className="text-primary">₭</span>Total Costs</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 text-sm">
                     <div className="flex justify-between items-center">
