@@ -60,7 +60,7 @@ export function Step2Players({ onSubmit, onBack, defaultValues, courtStartTime =
   return (
     <>
       <CardHeader>
-        <CardTitle className="font-headline text-2xl">Step 2: Player Details</CardTitle>
+        <CardTitle className="font-headline text-2xl">Player Details</CardTitle>
         <CardDescription>Add each player and their time on court.</CardDescription>
       </CardHeader>
 

@@ -46,7 +46,7 @@ export function Step1Costs({ onSubmit, defaultValues }: Step1CostsProps) {
   return (
     <>
       <CardHeader>
-        <CardTitle className="font-headline text-2xl">Step 1: Session Costs</CardTitle>
+        <CardTitle className="font-headline text-2xl">Session Costs</CardTitle>
         <CardDescription>Enter the details about court rental and shuttlecocks used.</CardDescription>
       </CardHeader>
 
