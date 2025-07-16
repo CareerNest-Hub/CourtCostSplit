@@ -37,9 +37,9 @@ export function Step1Costs({ onSubmit, defaultValues }: Step1CostsProps) {
     defaultValues: defaultValues || {
       courtStartTime: "19:00",
       courtEndTime: "21:00",
-      hourlyRate: 20,
-      shuttlecocksUsed: 4,
-      pricePerShuttlecock: 1.5,
+      hourlyRate: 0,
+      shuttlecocksUsed: 0,
+      pricePerShuttlecock: 0,
     },
   });
 
