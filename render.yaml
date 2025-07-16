@@ -1,0 +1,11 @@
+# render.yaml
+services:
+  - type: web
+    name: court-cost-split
+    env: node
+    plan: free # or your desired plan
+    buildCommand: 'npm install && npm run build'
+    startCommand: 'npm run start'
+    envVars:
+      - key: NODE_ENV
+        value: production
